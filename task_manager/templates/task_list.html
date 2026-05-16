@@ -8,7 +8,7 @@
 <body>
     <h1>sjasdlfj</h1>
     {% for obj in object_list %}
-        <h1>{{obj}}</h1>
+        <h1>{{obj}} <a href="{% url 'update' obj.id %}">update</a></h1>
     {% endfor %}
     <button><a href="{% url 'create' %}">create task</a></button>
 </body>

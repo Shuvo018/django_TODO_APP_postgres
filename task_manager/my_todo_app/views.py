@@ -6,9 +6,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from my_todo_app.models import Task
 from .form import TaskCreateForm
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import logout
+
 # Create your views here.
 
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'task_list.html'
 

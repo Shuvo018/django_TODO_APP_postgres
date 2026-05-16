@@ -3,6 +3,7 @@ URL configuration for task_manager project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
+
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,9 +17,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from my_todo_app.views import TaskListView, TaskCreateView
+from my_todo_app.views import TaskListView, TaskCreateView, TaskUpdateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view=TaskListView.as_view(), name='list'),
     path('create/', view=TaskCreateView.as_view(), name='create'),
+    path('update/<int:pk>', view=TaskUpdateView.as_view(), name='update'),
 ]

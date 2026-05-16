@@ -21,4 +21,9 @@ class TaskCreateView(CreateView):
     success_url = '/'
     # def get_success_url(self, **kargs) -> str:
     #     return reverse_lazy('list')
-    
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    form_class = TaskCreateForm
+    template_name = 'task_create.html'
+    success_url = '/'

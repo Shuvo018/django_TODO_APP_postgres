@@ -2,21 +2,23 @@ from typing import Any
 
 from django.shortcuts import render
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView
 from my_todo_app.models import Task
-
+from .form import TaskCreateForm
+from django.urls import reverse_lazy
 # Create your views here.
-# def home(request):
-#     return render(request=request, template_name='home.html')
 
 class TaskListView(ListView):
     model = Task
-    task_list = Task.objects.all()
     template_name = 'task_list.html'
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        context['task_list'] = self.task_list
-        return context
-    
 
+    
+class TaskCreateView(CreateView):
+    model = Task
+    form_class = TaskCreateForm
+    template_name = 'task_create.html'
+    success_url = '/'
+    # def get_success_url(self, **kargs) -> str:
+    #     return reverse_lazy('list')
     

@@ -18,7 +18,7 @@ TASK_STATUS = [
 class Task(TimeStampMixin):
     task_summary = models.CharField(max_length=100)
     task_detail = models.TextField()
-    task_deadline = models.DateTimeField()
+    task_deadline = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='tasks')
     task_status = models.CharField(
         max_length=100,

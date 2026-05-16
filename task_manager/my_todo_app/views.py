@@ -2,7 +2,7 @@ from typing import Any
 
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from my_todo_app.models import Task
 from .form import TaskCreateForm
 from django.urls import reverse_lazy
@@ -25,5 +25,10 @@ class TaskCreateView(CreateView):
 class TaskUpdateView(UpdateView):
     model = Task
     form_class = TaskCreateForm
+    template_name = 'task_create.html'
+    success_url = '/'
+
+class TaskDeleteView(DeleteView):
+    model = Task
     template_name = 'task_create.html'
     success_url = '/'

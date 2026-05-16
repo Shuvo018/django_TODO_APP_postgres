@@ -17,7 +17,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from my_todo_app.views import TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView
+from my_todo_app.views import TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView, UserCreateView
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -27,6 +27,7 @@ urlpatterns = [
     path('update/<int:pk>', view=TaskUpdateView.as_view(), name='update'),
     path('delete/<int:pk>', view=TaskDeleteView.as_view(), name='delete'),
     path('login/', view=LoginView.as_view(), name='login'),
-    path('logout/', view=LogoutView.as_view() ,name='dfj'),
+    path('logout/', view=LogoutView.as_view() ,name='logout'),
 
+    path('registration/', view=UserCreateView.as_view(), name='registration'),
 ]

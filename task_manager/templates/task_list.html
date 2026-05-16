@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>sjasdlfj</h1>
-    {% for obj in object_list %}
-        <h1>{{obj}} <a href="{% url 'update' obj.id %}">update</a>
-        <a href="{% url 'delete' obj.id %}">delete</a></h1>
+    <h1>List</h1>
+    <form action="" method="get">
+        <input type="text" name="task-summary" class="search-input">
+        <button type="submit">search</button>
+    </form>
+    <div>
+        <p><a href="{% url 'login' %}">login</a></p>
+        <p><a href="{% url 'logout' %}">logout</a></p>
+    </div>
+
+    {% for obj in task_list %}
+    <h1>{{obj}} <a href="{% url 'update' obj.id %}">update</a>
+        <a href="{% url 'delete' obj.id %}">delete</a>
+    </h1>
     {% endfor %}
     <button><a href="{% url 'create' %}">create task</a></button>
 </body>
+
 </html>
